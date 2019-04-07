@@ -1,7 +1,7 @@
-## DLNA service daemon for Raspberry pi - Docker image
+## DLNA service daemon for Raspberry Pi - Docker image
 
 Based on https://sourceforge.net/projects/minidlna/
-Build process pulls and build binaries from source (master).
+Binaries are built from source (master tree).
 
 
 ### Build it
@@ -19,11 +19,9 @@ Copy `conf/minidlna.conf` in `/opt/minidlna`.
 Defaults should be fine.
 
 
-## Run it
+## Run it (systemd)
 
-*Run with *systemd* (recommended).
-
-Edit MEDIADIR in `conf/spotifyd.service` to define your local video media directory.
+Edit `conf/spotifyd.service` and set MEDIADIR to your local video media directory.
 
 ```
 sudo cp conf/minidlna.service /etc/systemd/system/

@@ -21,7 +21,7 @@ Defaults should be fine.
 
 ## Run it (systemd)
 
-Edit `conf/spotifyd.service` and set MEDIADIR to your local video media directory.
+Edit `conf/minidlna.service` and set MEDIADIR to your local video media directory.
 
 ```
 sudo cp conf/minidlna.service /etc/systemd/system/

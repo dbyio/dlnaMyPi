@@ -13,7 +13,7 @@ RUN git clone https://git.code.sf.net/p/minidlna/git /tmp/sources && cd /tmp/sou
 FROM arm32v7/alpine:latest
 LABEL maintainer="np@bitbox.io"
 RUN apk update && apk upgrade && \
-	apk add --no-cache libexif libjpeg-turbo libid3tag flac libvorbis sqlite-libs ffmpeg-libs && \
+	apk add --no-cache gettext libexif libjpeg-turbo libid3tag flac libvorbis sqlite-libs ffmpeg-libs && \
 	rm -rf /var/cache/apk/* && \
 	mkdir /var/cache/minidlna /var/run/minidlna && chown daemon /var/cache/minidlna /var/run/minidlna
 COPY --from=BUILD /tmp/sources/minidlnad /usr/bin/

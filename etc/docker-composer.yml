@@ -1,0 +1,11 @@
+# /etc/docker/compose/minidla/docker-compose.yml
+version: '3'
+
+services:
+  minidlna:
+    image: minidlna
+    restart: unless-stopped
+    volumes:
+      - /usr/local/etc/minidlna.conf:/etc/minidlna.conf:ro
+      - /srv/media:/media:ro    # /srv/media is the path of local e
+    network_mode: "host"

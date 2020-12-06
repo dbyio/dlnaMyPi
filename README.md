@@ -15,19 +15,19 @@ sudo ./do.sh build
 
 ## Configure it
 
-Copy `conf/minidlna.conf` in `/opt/minidlna`.
+Copy `etc/minidlna.conf` in `/etc/minidlna`.
 Defaults should be fine.
 
 
-## Run it (systemd)
+## Run it (Systemd and Docker Compose)
 
-Edit `conf/minidlna.service` and set MEDIADIR to your local video media directory.
+You'll first need to install Docker Compose and set it up with Systemd.
+
+Copy `etc/docker-compose.yml` in `/etc/docker/compose/minidlna`. If needed, edit and set your local video media directory.
 
 ```
-sudo cp conf/minidlna.service /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable minidlna
-sudo systemctl start minidlna
+sudo mkdir /etc/docker/compose/minidlna && cp docker-compose.yml /etc/docker/compose/minidlna
+sudo systemctl enable docker-compose@minidlna --now
 ```
 
 
@@ -39,4 +39,4 @@ The following command will build a new image using the latest minidlna source an
 sudo ./do.sh update
 ```
 
-You'll then need to (re)start the image manually.
+You'll then need to (re)start the service manually.

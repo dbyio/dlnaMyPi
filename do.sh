@@ -37,31 +37,13 @@ function image_exists() {
 }
 
 function do_run() {
-	require_root
-	if is_running; then
-		echo "Container running already, doing nothing."
-		return 0
-	fi
-	
-	if container_exists; then
-		echo "Starting existing container.."
-		docker start minidlna
-		return $?
-	fi
-
-	echo "Starting new container."
-	docker run --name minidlna -d \
-		-v "/opt/minidlna/minidlna.conf:/etc/minidlna.conf:ro" \
-		-v "/srv/media/movies:/media:ro" \
-		--rm --network host \
-		minidlna
-	return $?
+	echo "Use Systemd with Docker Compose instead. See README file."
+	exit 0
 }
 
 function do_update() {
 	require_root
-	is_running && systemctl stop minidlna
-	is_running && docker stop minidlna
+	is_running && systemctl stop docker-compose@minidlna
 	container_exists && docker rm minidlna
 
 	if image_exists; then docker rmi minidlna; fi

@@ -7,5 +7,5 @@ services:
     restart: unless-stopped
     volumes:
       - /usr/local/etc/minidlna.conf:/etc/minidlna.conf:ro
-      - /srv/media:/media:ro    # /srv/media is the path of local e
+      - /srv/media:/media:ro    # change /srv/media to the path of your media directory
     network_mode: "host"
